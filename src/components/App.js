@@ -6,7 +6,7 @@ class App extends React.Component {
 		super(props)
 
 	this.state = {
-	items: [],
+		items: [],
 		fruit: [],
 		filters: [],
 		currentFilter: null
@@ -17,8 +17,8 @@ class App extends React.Component {
     this.fetchFilters();
     fetch('/api/fruit')
       .then(response => response.json())
-      .then(items => this.setState({ items }));
-  }
+      .then(items => this.setState({ items })) 
+	 }
 
  handleFilterChange = event => {
     console.log('new filter: ', event.target.value);
@@ -41,8 +41,6 @@ this.setState({
 }
 
 	render(){
-
-
 	return(
 	<FruitBasket handleFilterChange={this.handleFilterChange} currentFilter={this.currentFilter} filters={this.state.filters} fruit={this.state.fruit}/>
 )}}
