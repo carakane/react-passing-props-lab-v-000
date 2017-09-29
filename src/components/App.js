@@ -15,9 +15,6 @@ class App extends React.Component {
 
   componentWillMount() {
     this.fetchFilters();
-  }
-
-  componentWillMount() {
     fetch('/api/fruit')
       .then(response => response.json())
       .then(items => this.setState({ items }));
@@ -38,7 +35,7 @@ class App extends React.Component {
     const list = !this.props.filter || this.props.filter === 'all' ? this.state.items : this.state.items.filter(i => i.fruit_type === this.props.filter);
 
 	return(
-	<FruitBasket handleFilterChange={this.handleFilterChange} selectedFilter={this.selectedFilter} filters={this.state.filters} items={this.state.items}/>
+	<FruitBasket handleFilterChange={this.handleFilterChange} selectedFilter={this.selectedFilter} filters={this.state.filters} items={this.state.items} list={list}/>
 )}}
 
 export default App;
