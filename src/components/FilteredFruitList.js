@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FilteredFruitList = ({fruit}) =>
+const FilteredFruitList = ({fruit, filter}) =>
      
  <ul className="fruit-list">
         {fruit.map((item, index) => <li key={index}>{item.char}</li>)}

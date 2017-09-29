@@ -6,7 +6,7 @@ class App extends React.Component {
 		super(props)
 
 	this.state = {
-		items:[],
+	items: [],
 		fruit: [],
 		filters: [],
 		currentFilter: null
@@ -22,7 +22,11 @@ class App extends React.Component {
 
  handleFilterChange = event => {
     console.log('new filter: ', event.target.value);
-    this.setState({ currentFilter: event.target.value });
+    this.setState({ currentFilter: event.target.value})
+				const list = !event.target.value || event.target.value === 'all' ? this.state.items : this.state.items.filter(i => i.fruit_type === event.target.value);
+this.setState({
+			fruit: list
+	})
   }
 
   fetchFilters = () => {
@@ -31,18 +35,16 @@ class App extends React.Component {
       .then(filters => this.setState({ filters }));
   }
 
+
 	updateFilterCallback = () => {
-		const list = !this.state.currentFilter || this.state.currentFilter === 'all' ? this.state.items : this.state.items.filter(i => i.fruit_type === this.state.currentFilter);
-this.setState({
-			fruit: list
-	})
+
 }
 
 	render(){
 
 
 	return(
-	<FruitBasket handleFilterChange={this.handleFilterChange} currentFilter={this.currentFilter} filters={this.state.filters} items={this.state.items} fruit={this.state.fruit}/>
+	<FruitBasket handleFilterChange={this.handleFilterChange} currentFilter={this.currentFilter} filters={this.state.filters} fruit={this.state.fruit}/>
 )}}
 
 export default App;
