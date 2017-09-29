@@ -3,11 +3,11 @@ import React from 'react';
 import Filter from './Filter';
 import FilteredFruitList from './FilteredFruitList.js';
 
-const FruitBasket = ({handleFilterChange, currentFilter, filters, fruit, list}) =>
+const FruitBasket = ({updateFilterCallback, handleFilterChange, currentFilter, filters, fruit, list}) =>
       <div className="fruit-basket">
-        <Filter handleChange={handleFilterChange} filters={filters} />
+        <Filter onChange={updateFilterCallback} handleChange={handleFilterChange} filters={filters} />
         <FilteredFruitList
-          filter={currentFilter} list={list} fruit={fruit}/>
+          filter={currentFilter} fruit={fruit}/>
       </div>
 
 FruitBasket.defaultProps = {

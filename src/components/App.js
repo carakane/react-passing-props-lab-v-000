@@ -6,8 +6,8 @@ class App extends React.Component {
 		super(props)
 
 	this.state = {
+		items:[],
 		fruit: [],
-		items: [],
 		filters: [],
 		currentFilter: null
 	}
@@ -31,11 +31,18 @@ class App extends React.Component {
       .then(filters => this.setState({ filters }));
   }
 
+	updateFilterCallback = () => {
+		const list = !this.state.currentFilter || this.state.currentFilter === 'all' ? this.state.items : this.state.items.filter(i => i.fruit_type === this.state.currentFilter);
+this.setState({
+			fruit: list
+	})
+}
+
 	render(){
-    const list = !this.props.filter || this.props.filter === 'all' ? this.state.items : this.state.items.filter(i => i.fruit_type === this.props.filter);
+
 
 	return(
-	<FruitBasket handleFilterChange={this.handleFilterChange} currentFilter={this.currentFilter} filters={this.state.filters} items={this.state.items} list={list} fruit={this.state.fruit}/>
+	<FruitBasket handleFilterChange={this.handleFilterChange} currentFilter={this.currentFilter} filters={this.state.filters} items={this.state.items} fruit={this.state.fruit}/>
 )}}
 
 export default App;
