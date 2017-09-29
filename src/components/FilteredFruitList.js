@@ -1,11 +1,12 @@
 import React from 'react';
 
-const FilteredFruitList = ({list}) =>
+const FilteredFruitList = ({fruit}) =>
       <ul className="fruit-list">
-        {list.map((item, index) => <li key={index}>{item.char}</li>)}
+        {fruit.map((item, index) => <li key={index}>{item.char}</li>)}
       </ul>
 
 FilteredFruitList.defaultProps = {
+	list: [],
 	fruit: "",
 	filter: ""
 }

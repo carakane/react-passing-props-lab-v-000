@@ -22,7 +22,7 @@ class App extends React.Component {
 
  handleFilterChange = event => {
     console.log('new filter: ', event.target.value);
-    this.setState({ selectedFilter: event.target.value });
+    this.setState({ currentFilter: event.target.value });
   }
 
   fetchFilters = () => {
@@ -35,7 +35,7 @@ class App extends React.Component {
     const list = !this.props.filter || this.props.filter === 'all' ? this.state.items : this.state.items.filter(i => i.fruit_type === this.props.filter);
 
 	return(
-	<FruitBasket handleFilterChange={this.handleFilterChange} selectedFilter={this.selectedFilter} filters={this.state.filters} items={this.state.items} list={list}/>
+	<FruitBasket handleFilterChange={this.handleFilterChange} currentFilter={this.currentFilter} filters={this.state.filters} items={this.state.items} list={list} fruit={this.state.fruit}/>
 )}}
 
 export default App;
